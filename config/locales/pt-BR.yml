@@ -10,11 +10,12 @@ pt-BR:
         usuario:
           attributes:
             password:
-              too_short: 'deve ter no mínimo 6 caracteres'
+              too_short: "deve ter no mínimo 6 caracteres"
             password_confirmation:
-              confirmation: 'deve ser igual a senha'
-              too_short: 'deve ter no mínimo 6 caracteres'
+              confirmation: "deve ser igual a senha"
+              too_short: "deve ter no mínimo 6 caracteres"
             email:
-              taken: 'já existente'
+              invalid: "válido"
+              taken: "já existente"
       messages:
-        record_invalid: 'inválido'
+        record_invalid: "inválido"

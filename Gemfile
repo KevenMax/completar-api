@@ -10,20 +10,25 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Authtentication of users
-gem 'devise_token_auth'
+# gem 'devise_token_auth'
 # ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers', '~> 0.10.0'
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff http://rails-i18n.org
 gem 'rails-i18n', '~> 5.1'
 # Translations for the devise gem
-gem 'devise-i18n'
+# gem 'devise-i18n'
+# Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 2.0'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard. https://jwt.github.io/ruby-jwt/
+gem 'jwt'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

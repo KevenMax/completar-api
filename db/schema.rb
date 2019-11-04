@@ -76,37 +76,20 @@ ActiveRecord::Schema.define(version: 2019_07_09_204747) do
   end
 
   create_table "usuarios", force: :cascade do |t|
-    t.string "provider", default: "email", null: false
-    t.string "uid", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.boolean "allow_password_change", default: false
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.string "nome"
     t.string "email"
+    t.string "password_digest"
+    t.string "nome"
     t.string "apelido"
-    t.integer "matricula"
+    t.string "matricula"
     t.string "foto"
     t.string "contato"
-    t.boolean "administrador", default: false
+    t.boolean "administrador"
     t.bigint "campu_id"
     t.bigint "curso_id"
-    t.boolean "ativo", default: true
-    t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campu_id"], name: "index_usuarios_on_campu_id"
-    t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["curso_id"], name: "index_usuarios_on_curso_id"
-    t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["matricula"], name: "index_usuarios_on_matricula", unique: true
-    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_usuarios_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "atividades", "categorias"
