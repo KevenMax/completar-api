@@ -19,6 +19,7 @@ gem 'rails-i18n', '~> 5.1'
 # gem 'devise-i18n'
 # Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave', '~> 2.0'
+gem 'rmagick'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard. https://jwt.github.io/ruby-jwt/
