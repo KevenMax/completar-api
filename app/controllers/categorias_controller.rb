@@ -1,16 +1,28 @@
 class CategoriasController < ApplicationController
   before_action :set_categoria, only: [:show, :update, :destroy]
-
   # GET /categorias
-  def index
-    @categorias = Categoria.all
+  def home
+    percentual = @usuario.percentual_horas_realizadas 
+    categorias = @usuario.categorias
+    data = {
+      percentual: percentual,
+      categorias: categorias
+    }
+    render json: data
+  end
 
-    render json: @categorias
+  def index
+    render json: @usuario.categorias
   end
 
   # GET /categorias/1
   def show
-    render json: @categoria
+    percentual = @categoria.percentual_realizado(@usuario)
+    data = {
+      percentual: percentual,
+      categoria: @categoria
+    }
+    render json: data
   end
 
   # POST /categorias
@@ -39,13 +51,14 @@ class CategoriasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_categoria
-      @categoria = Categoria.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_categoria
+    @categoria = Categoria.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def categoria_params
-      params.require(:categoria).permit(:nome, :limite_carga_horaria, :curso_id, :ativo)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def categoria_params
+    params.require(:categoria).permit(:nome, :limite_carga_horaria, :curso_id, :ativo)
+  end
 end
