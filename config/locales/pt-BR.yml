@@ -15,7 +15,10 @@ pt-BR:
               confirmation: "deve ser igual a senha"
               too_short: "deve ter no mínimo 6 caracteres"
             email:
-              invalid: "válido"
+              invalid: "inválido"
               taken: "já existente"
       messages:
         record_invalid: "inválido"
+  errors:
+    messages:
+      extension_whitelist_error: "não está no formato aceito, tente JPG, PNG ou JPEG"
