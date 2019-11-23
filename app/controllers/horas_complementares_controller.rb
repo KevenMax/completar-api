@@ -3,7 +3,7 @@ class HorasComplementaresController < ApplicationController
 
   # GET /horas_complementares
   def index
-    @horas_complementares = HorasComplementar.all
+    @horas_complementares = HorasComplementar.where(ativo: true, usuario_id: @usuario.id, categoria_id: params[:categoria_id])
 
     render json: @horas_complementares
   end
@@ -16,11 +16,15 @@ class HorasComplementaresController < ApplicationController
   # POST /horas_complementares
   def create
     @horas_complementar = HorasComplementar.new(horas_complementar_params)
-
-    if @horas_complementar.save
-      render json: @horas_complementar, status: :created, location: @horas_complementar
+    # raise horas_complementar_params.inspect
+    if @horas_complementar.quantidade_horas_valido
+      if @horas_complementar.save
+        render json: @usuario, include: [:campu, :curso], status: 201
+      else
+        render json: @horas_complementar.errors.full_messages, status: 422
+      end
     else
-      render json: @horas_complementar.errors, status: :unprocessable_entity
+      render json: {error: 'Quantidade horas execede o limite da categoria'}, status: 422
     end
   end
 
@@ -46,6 +50,6 @@ class HorasComplementaresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def horas_complementar_params
-      params.require(:horas_complementar).permit(:categoria_id, :atividade_id, :descricao, :quantidade_horas, :usuario_id, :anexo, :ativo)
+      params.permit(:categoria_id, :atividade_id, :descricao, :quantidade_horas, :usuario_id, :anexo, :ativo)
     end
 end
