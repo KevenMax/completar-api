@@ -3,7 +3,7 @@ class CursosController < ApplicationController
 
   # GET /cursos
   def index
-    @cursos = Curso.all
+    @cursos = Curso.where(ativo: true)
 
     render json: @cursos
   end
