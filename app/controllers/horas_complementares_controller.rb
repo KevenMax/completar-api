@@ -39,7 +39,7 @@ class HorasComplementaresController < ApplicationController
 
   # DELETE /horas_complementares/1
   def destroy
-    @horas_complementar.destroy
+    @horas_complementar.update(ativo: false)
   end
 
   private
