@@ -16,7 +16,7 @@ class HorasComplementaresController < ApplicationController
   # POST /horas_complementares
   def create
     @horas_complementar = HorasComplementar.new(horas_complementar_params)
-    # raise horas_complementar_params.inspect
+
     if @horas_complementar.quantidade_horas_valido
       if @horas_complementar.save
         render json: @usuario, include: [:campu, :curso], status: 201
@@ -40,6 +40,7 @@ class HorasComplementaresController < ApplicationController
   # DELETE /horas_complementares/1
   def destroy
     @horas_complementar.update(ativo: false)
+    render json: @usuario, include: [:campu, :curso], status: 200
   end
 
   private
